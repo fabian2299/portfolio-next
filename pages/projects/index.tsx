@@ -7,6 +7,7 @@ import { clientAxios } from 'services/clientAxios'
 import { IProject } from 'types'
 
 const categoryList = [
+  'view all',
   'nextjs',
   'react',
   'tailwindcss',
@@ -33,7 +34,7 @@ export default function Home({
 
   useEffect(() => {
     const getFilterResults = async () => {
-      if (filter === '') {
+      if (filter === '' || filter === 'all') {
         setFilterResults([])
         return
       }
@@ -59,22 +60,24 @@ export default function Home({
     getResults()
   }, [debouncedValue])
 
-  console.log(filterResults)
-
   return (
     <Main title="Projects">
-      {/* Categorias */}
-      <h2 className="text-xl text-center font-semibold">Search by Category</h2>
-      <div className="space-x-5 p-5 text-center mx-auto">
-        {categoryList.map((category, i) => (
-          <button
-            className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30"
-            key={i}
-            onClick={() => setFilter(category)}
-          >
-            {category}
-          </button>
-        ))}
+      {/* Categories */}
+      <div className="p-10 space-y-8 border-x">
+        <h2 className=" text-center text-3xl font-black text-emerald-800">
+          Search by Category
+        </h2>
+        <div className="space-x-5 text-center mx-auto">
+          {categoryList.map((category, i) => (
+            <button
+              className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30"
+              key={i}
+              onClick={() => setFilter(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
       </div>
       {/* Search */}
       <div className="p-3 bg-emerald-700">
@@ -88,7 +91,7 @@ export default function Home({
           placeholder="Search Projects by title..."
         />
       </div>
-
+      {/* Projects */}
       {filterResults.length > 0 && searchResults.length <= 0 && (
         <ProjectList projects={filterResults} />
       )}

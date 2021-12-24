@@ -8,9 +8,9 @@ import { IProject } from 'types'
 
 export default function ProjectDetail({ project }: { project: IProject }) {
   const router = useRouter()
-  const { content, deployedUrl, githubUrl, title, image, categories } = project
-
-  const categoriesArray = categories?.split(',')
+  const { content, deployedUrl, githubUrl, title, image, categories, id } =
+    project
+  const categoriesArray = categories?.trim().split(',')
 
   return (
     <motion.section initial="initial" animate="animate" className="p-5 ">
@@ -18,16 +18,15 @@ export default function ProjectDetail({ project }: { project: IProject }) {
         onClick={() => router.back()}
         className="py-2 px-3 bg-emerald-600 rounded-lg text-white my-4"
       >
-        {' '}
         Go Back
       </button>
-      <div className="grid grid-cols-2 gap-10 justify-center items-center p-5 ">
+      <article className="grid grid-cols-2 gap-10 justify-center items-center p-5 border-2 border-gray-400 rounded-lg shadow-lg shadow-gray-400">
         <motion.div
           variants={fadeInUp}
           className="relative h-96 w-[80%] mx-auto "
         >
           <Image
-            src={image!}
+            src={image ? image : '/images/rocket.jpg'}
             alt={title}
             layout="fill"
             objectFit="cover"
@@ -35,8 +34,10 @@ export default function ProjectDetail({ project }: { project: IProject }) {
           />
         </motion.div>
 
-        <div className=" space-y-8">
-          <h1 className="text-center text-4xl font-bold">{title}</h1>
+        <div className=" space-y-8 flex flex-col items-center p-10">
+          <h1 className="text-center text-4xl font-black text-emerald-800">
+            {title}
+          </h1>
           <article className="max-w-xl prose">
             <ReactMarkdown>{content}</ReactMarkdown>
           </article>
@@ -77,7 +78,7 @@ export default function ProjectDetail({ project }: { project: IProject }) {
             </Link>
           </div>
         </div>
-      </div>
+      </article>
     </motion.section>
   )
 }

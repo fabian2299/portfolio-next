@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import Router from 'next/router'
 import { stringToSlug } from 'lib'
 import { clientAxios } from 'services/clientAxios'
+import Main from '@/components/layout/Main'
 
 export default function CreatePage() {
   const [slug, setSlug] = useState('')
@@ -58,104 +59,161 @@ export default function CreatePage() {
   const notValid = Object.values(values).includes('')
 
   return (
-    <div className="py-10">
-      <h1 className="text-2xl text-center font-bold">Create a Project</h1>
-      <form className="space-y-5 mt-10 max-w-xl mx-auto" onSubmit={submitData}>
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="title">Title</label>
-          <input
-            autoFocus
-            id="title"
-            name="title"
-            onChange={handleChange}
-            placeholder="write a title"
-            type="text"
-            value={values.title}
-          />
-        </div>
+    <Main title="Create">
+      <div className="py-10 hidden md:block">
+        <h1 className="text-4xl text-emerald-800 text-center font-bold">
+          Create a Project
+        </h1>
 
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="categories">Categories</label>
-          <input
-            id="categories"
-            name="categories"
-            onChange={handleChange}
-            placeholder="write categories"
-            type="text"
-            value={values.categories}
-          />
-        </div>
-
-        <div className=" space-y-5 flex flex-col">
-          <label htmlFor="file">File</label>
-          <input
-            type="file"
-            id="file"
-            onChange={handleFileChange}
-            name="file"
-          />
-        </div>
-
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="content">Content</label>
-          <textarea
-            id="content"
-            name="content"
-            rows={10}
-            cols={10}
-            className="p-2"
-            onChange={handleChange}
-            placeholder="write a description"
-            value={values.content}
-          />
-        </div>
-
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="deployedUrl">Deployed Url</label>
-          <input
-            id="deployedUrl"
-            name="deployedUrl"
-            onChange={handleChange}
-            placeholder="deploy url"
-            type="text"
-            value={values.deployedUrl}
-          />
-        </div>
-
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="githubUrl">Github Url</label>
-          <input
-            id="githubUrl"
-            name="githubUrl"
-            onChange={handleChange}
-            placeholder="write a title"
-            type="text"
-            value={values.githubUrl}
-          />
-        </div>
-
-        <div className="flex flex-col space-y-5">
-          <label htmlFor="slug">Slug</label>
-          <input id="slug" name="slug" type="text" value={slug} readOnly />
-        </div>
-
-        <input
-          disabled={notValid}
-          type="submit"
-          value="Create Project"
-          className={`${
-            notValid ? 'bg-emerald-600/70' : 'bg-emerald-800'
-          }  text-white p-2 rounded-lg cursor-pointer`}
-        />
-
-        <button
-          type="button"
-          className=" ml-4 bg-red-400 text-white p-2 rounded-lg"
-          onClick={() => Router.push('/')}
+        <form
+          className="space-y-5 mt-10 max-w-4xl mx-auto"
+          onSubmit={submitData}
         >
-          or Cancel
-        </button>
-      </form>
-    </div>
+          <div className="flex space-x-5">
+            <div className="flex flex-col flex-1 space-y-5">
+              <label
+                className="text-2xl font-bold text-emerald-800"
+                htmlFor="title"
+              >
+                Title
+              </label>
+              <input
+                autoFocus
+                id="title"
+                name="title"
+                onChange={handleChange}
+                placeholder="write a title"
+                type="text"
+                value={values.title}
+                className="rounded-lg text-slate-700"
+              />
+            </div>
+
+            <div className="flex flex-col space-y-5 flex-1">
+              <label
+                className="text-2xl font-bold text-emerald-800"
+                htmlFor="categories"
+              >
+                Categories
+              </label>
+              <input
+                id="categories"
+                name="categories"
+                onChange={handleChange}
+                placeholder="write categories"
+                type="text"
+                value={values.categories}
+                className="rounded-lg text-slate-700"
+              />
+            </div>
+          </div>
+
+          <div className=" space-y-5 flex flex-col">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="file"
+            >
+              File
+            </label>
+            <input
+              type="file"
+              id="file"
+              onChange={handleFileChange}
+              name="file"
+              className="file:rounded-lg file:bg-emerald-800 file:text-slate-100 file:mr-4 file:cursor-pointer"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-5">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="content"
+            >
+              Content
+            </label>
+            <textarea
+              id="content"
+              name="content"
+              rows={10}
+              cols={10}
+              onChange={handleChange}
+              placeholder="write a description"
+              value={values.content}
+              className="rounded-lg text-slate-700 p-2"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-5">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="deployedUrl"
+            >
+              Deployed Url
+            </label>
+            <input
+              id="deployedUrl"
+              name="deployedUrl"
+              onChange={handleChange}
+              placeholder="deploy url"
+              type="text"
+              value={values.deployedUrl}
+              className="rounded-lg text-slate-700"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-5">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="githubUrl"
+            >
+              Github Url
+            </label>
+            <input
+              id="githubUrl"
+              name="githubUrl"
+              onChange={handleChange}
+              placeholder="github url"
+              type="text"
+              value={values.githubUrl}
+              className="rounded-lg text-slate-700"
+            />
+          </div>
+
+          <div className="flex flex-col space-y-5">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="slug"
+            >
+              Slug
+            </label>
+            <input
+              id="slug"
+              name="slug"
+              type="text"
+              value={slug}
+              readOnly
+              className="rounded-lg text-slate-700 cursor-not-allowed"
+            />
+          </div>
+
+          <input
+            disabled={notValid}
+            type="submit"
+            value="Create Project"
+            className={`${
+              notValid ? 'bg-emerald-600/70' : 'bg-emerald-800'
+            }  text-white p-2 rounded-lg cursor-pointer`}
+          />
+
+          <button
+            type="button"
+            className=" ml-4 bg-red-400 text-white p-2 rounded-lg"
+            onClick={() => Router.push('/')}
+          >
+            or Cancel
+          </button>
+        </form>
+      </div>
+    </Main>
   )
 }

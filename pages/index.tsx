@@ -8,8 +8,6 @@ import { IProject } from 'types'
 export default function Web({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(projects)
-
   return (
     <Main title="Home">
       <Hero />

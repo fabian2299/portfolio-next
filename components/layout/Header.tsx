@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BiRocket } from 'react-icons/bi'
@@ -7,7 +8,7 @@ export default function Header() {
   const isActive = (pathname: string) => router.pathname === pathname
   return (
     <header className="sticky top-0 bg-slate-100 z-10">
-      <div className="flex justify-between  p-5 max-w-6xl mx-auto">
+      <div className="flex justify-between items-center p-1 max-w-6xl mx-auto">
         {/* Logo */}
         <Link href="/">
           <a>
@@ -20,7 +21,7 @@ export default function Header() {
           </a>
         </Link>
         {/* Nav */}
-        <ul className="flex space-x-5">
+        <ul className="flex space-x-5 items-center">
           <li>
             <Link href="/">
               <a
@@ -57,6 +58,16 @@ export default function Header() {
                 About
               </a>
             </Link>
+          </li>
+
+          <li>
+            <Image
+              src="/images/perfil.jpeg"
+              alt="perfil"
+              width={40}
+              height={40}
+              className="rounded-xl"
+            />
           </li>
         </ul>
       </div>

@@ -5,10 +5,10 @@ import rocket from '../public/images/rocket.jpg'
 export default function AboutPage() {
   return (
     <Main title="About">
-      <section className="flex justify-center items-center h-96 my-20 p-10">
-        <div className="w-1/3 relative h-80">
+      <section className="flex flex-col items-center space-y-10 p-5 border border-gray-400 rounded-lg shadow-lg shadow-gray-400 my-3">
+        <div className="relative h-80 w-[30rem] rounded-lg overflow-hidden">
           <Image
-            className="rounded-lg"
+            className=""
             src={rocket}
             alt="rocket"
             layout="fill"
@@ -17,19 +17,21 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="w-2/3 flex flex-col  items-center space-y-5">
-          <h1 className="text-3xl font-bold uppercase text-slate-800">
+        <div className="flex flex-col items-center space-y-5">
+          <h1 className="text-4xl font-bold uppercase text-slate-800">
             about me
           </h1>
-          <p>Hi, I’m Fabian. Nice to meet you.</p>
-          <p className="max-w-2xl text-slate-700 leading-7">
+          <p className="max-w-2xl text-slate-800 leading-7 text-xl">
             Since 2020 I discovered the world that was within programming and
             one of the areas that most caught my attention was web development,
             since then I have been studying and developing personal projects, my
             favorite language is javascript due to the freedom it gives to the
-            developer when creating web applications. My main activity is the
-            frontend but my goal is to understand and cover the entire
-            development process from the design of the idea to production.
+            developer when creating web applications.
+          </p>
+          <p className="max-w-2xl text-slate-800 leading-7 text-xl">
+            My main activity is the frontend but my goal is to understand and
+            cover the entire development process from the design of the idea to
+            production.
           </p>
         </div>
       </section>

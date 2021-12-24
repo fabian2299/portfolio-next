@@ -13,22 +13,23 @@ export default function ProjectList({ projects }: ProjectListProps) {
     <motion.section
       initial="initial"
       animate="animate"
-      className=" space-y-5 py-10"
+      className="space-y-5 p-10 border-x"
     >
       <motion.h2
         variants={fadeTitle}
-        className=" text-center text-2xl font-black text-emerald-800"
+        className=" text-center text-4xl font-black text-emerald-800"
       >
         All My Projects
       </motion.h2>
 
       <motion.div
         variants={stagger}
-        className="grid grid-cols-3 gap-5 justify-center max-w-6xl mx-auto"
+        className="grid grid-cols-3 gap-5 justify-center items-center "
       >
         {projects.map((project) => (
           <Link href={`projects/${project.slug}`} key={project.id} passHref>
             <motion.a
+              className="text-center"
               variants={fadeInUp}
               whileHover={{
                 scale: 1.05,

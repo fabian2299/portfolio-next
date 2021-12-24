@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function NotFoundPage() {
   return (
     <div className="min-h-[50vh] justify-center items-center flex flex-col space-y-8">
-      <h1 className=" text-3xl font-semibold">
+      <h1 className=" text-center text-4xl font-black text-emerald-800">
         Hello, it seems that your are lost
       </h1>
       <Link href="/">
