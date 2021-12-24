@@ -67,7 +67,7 @@ export default function Home({
         <h2 className=" text-center text-3xl font-black text-emerald-800">
           Search by Category
         </h2>
-        <div className="space-x-5 text-center mx-auto">
+        <div className="grid md:grid-cols-5 gap-4 text-center mx-auto">
           {categoryList.map((category, i) => (
             <button
               className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30"

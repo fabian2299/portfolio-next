@@ -24,7 +24,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
 
       <motion.div
         variants={stagger}
-        className="grid grid-cols-3 gap-5 justify-center items-center "
+        className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center items-center "
       >
         {projects.map((project) => (
           <Link href={`projects/${project.slug}`} key={project.id} passHref>

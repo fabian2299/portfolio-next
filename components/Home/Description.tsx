@@ -12,7 +12,7 @@ export default function Description({
   description,
 }: DescriptionProps) {
   return (
-    <div className="relative h-80 w-[28rem] rounded-lg overflow-hidden mx-auto">
+    <div className="relative h-80 min-w-full rounded-lg overflow-hidden mx-auto">
       <Image
         src={image}
         alt="description"

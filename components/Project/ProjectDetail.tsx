@@ -13,17 +13,17 @@ export default function ProjectDetail({ project }: { project: IProject }) {
   const categoriesArray = categories?.trim().split(',')
 
   return (
-    <motion.section initial="initial" animate="animate" className="p-5 ">
+    <motion.section initial="initial" animate="animate" className="p-5">
       <button
         onClick={() => router.back()}
         className="py-2 px-3 bg-emerald-600 rounded-lg text-white my-4"
       >
         Go Back
       </button>
-      <article className="grid grid-cols-2 gap-10 justify-center items-center p-5 border-2 border-gray-400 rounded-lg shadow-lg shadow-gray-400">
+      <article className="grid  lg:grid-cols-2 gap-10 justify-center items-center p-5 border-2 border-gray-400 rounded-lg shadow-lg shadow-gray-400">
         <motion.div
           variants={fadeInUp}
-          className="relative h-96 w-[80%] mx-auto "
+          className="relative h-60 lg:h-96 min-w-full mx-auto "
         >
           <Image
             src={image ? image : '/images/rocket.jpg'}
@@ -38,19 +38,19 @@ export default function ProjectDetail({ project }: { project: IProject }) {
           <h1 className="text-center text-4xl font-black text-emerald-800">
             {title}
           </h1>
-          <article className="max-w-xl prose">
+          <article className="prose">
             <ReactMarkdown>{content}</ReactMarkdown>
           </article>
 
           {categories && (
             <motion.ul
               variants={stagger}
-              className="flex space-x-5 select-none"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center items-center select-none"
             >
               {categoriesArray?.map((category, i) => (
                 <motion.li
                   variants={fadeInUp}
-                  className="bg-emerald-700 text-white py-1 px-3 rounded-lg shadow-lg shadow-emerald-800/30  "
+                  className="bg-emerald-700 text-center text-white py-1 px-3 rounded-lg shadow-lg shadow-emerald-800/30  "
                   key={i}
                 >
                   {category}
@@ -59,7 +59,7 @@ export default function ProjectDetail({ project }: { project: IProject }) {
             </motion.ul>
           )}
 
-          <div className=" space-x-5 p-3">
+          <div className="flex space-x-5 p-3">
             <Link href={deployedUrl}>
               <a
                 target="_blank"

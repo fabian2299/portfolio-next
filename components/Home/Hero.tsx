@@ -12,7 +12,7 @@ export default function Hero() {
         </h1>
       </div>
 
-      <div className="grid  md:grid-cols-2 lg:grid-cols-3  gap-5 ">
+      <div className="grid  md:grid-cols-2 xl:grid-cols-3  gap-5 ">
         <Description
           title="Technologies"
           description="I am improving and practicing every day, to build scalable, functional and great applications (like this one 😃   )."

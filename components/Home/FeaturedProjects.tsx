@@ -24,12 +24,12 @@ export default function FeaturedProjects({
 
       <motion.div
         variants={stagger}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        className="grid md:grid-cols-2 xl:grid-cols-3 gap-5"
       >
         {projects.slice(0, 3).map((project) => (
           <Link href={`projects/${project.slug}`} key={project.id} passHref>
             <motion.a
-              className="text-center w-[28rem] mx-auto"
+              className="text-center min-w-full mx-auto"
               variants={fadeInUp}
               whileHover={{
                 scale: 1.05,

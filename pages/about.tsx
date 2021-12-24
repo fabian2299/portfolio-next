@@ -5,14 +5,14 @@ import rocket from '../public/images/rocket.jpg'
 export default function AboutPage() {
   return (
     <Main title="About">
-      <section className="flex flex-col items-center space-y-10 p-5 border border-gray-400 rounded-lg shadow-lg shadow-gray-400 my-3">
-        <div className="relative h-80 w-[30rem] rounded-lg overflow-hidden">
+      <section className="flex flex-col items-center space-y-10 p-5 border-x max-w-4xl mx-auto">
+        <div className="relative h-80 min-w-full rounded-lg overflow-hidden">
           <Image
             className=""
             src={rocket}
             alt="rocket"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             placeholder="blur"
           />
         </div>
@@ -22,9 +22,8 @@ export default function AboutPage() {
             about me
           </h1>
           <p className="max-w-2xl text-slate-800 leading-7 text-xl">
-            Since 2020 I discovered the world that was within programming and
-            one of the areas that most caught my attention was web development,
-            since then I have been studying and developing personal projects, my
+            Since 2020 I discovered the world that was within programming since
+            then I have been studying and developing personal projects, my
             favorite language is javascript due to the freedom it gives to the
             developer when creating web applications.
           </p>
