@@ -62,12 +62,24 @@ export default function Home({
 
   return (
     <Main title="Projects">
-      {/* Categories */}
       <div className="p-10 space-y-8 border-x">
         <h2 className=" text-center text-3xl font-black text-emerald-800">
           Search by Category
         </h2>
-        <div className="grid md:grid-cols-5 gap-4 text-center mx-auto">
+        {/* mobile categories */}
+        <select
+          name="category"
+          className="md:hidden rounded-lg bg-emerald-700 text-white text-xl text-center"
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          {categoryList.map((category, i) => (
+            <option key={i} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+        {/* desktop categories */}
+        <div className="hidden md:grid md:grid-cols-5 gap-4 text-center mx-auto">
           {categoryList.map((category, i) => (
             <button
               className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30"
@@ -79,7 +91,7 @@ export default function Home({
           ))}
         </div>
       </div>
-      {/* Search */}
+      {/* search */}
       <div className="p-3 bg-emerald-700">
         <input
           type="search"
@@ -91,7 +103,7 @@ export default function Home({
           placeholder="Search Projects by title..."
         />
       </div>
-      {/* Projects */}
+      {/* projects */}
       {filterResults.length > 0 && searchResults.length <= 0 && (
         <ProjectList projects={filterResults} />
       )}

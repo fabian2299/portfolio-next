@@ -59,7 +59,7 @@ export default function ProjectDetail({ project }: { project: IProject }) {
             </motion.ul>
           )}
 
-          <div className="flex space-x-5 p-3">
+          <div className="flex space-x-5 text-center">
             <Link href={deployedUrl}>
               <a
                 target="_blank"
