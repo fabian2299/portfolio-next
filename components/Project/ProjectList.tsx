@@ -27,7 +27,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
         className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center items-center "
       >
         {projects.map((project) => (
-          <Link href={`projects/${project.slug}`} key={project.id} passHref>
+          <Link href={`/projects/${project.slug}`} key={project.id} passHref>
             <motion.a
               className="text-center"
               variants={fadeInUp}

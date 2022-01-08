@@ -3,16 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { IProject } from 'types'
 
 export default function ProjectCard({ project }: { project: IProject }) {
-  const {
-    content,
-    deployedUrl,
-    githubUrl,
-    slug,
-    title,
-    image,
-    id,
-    categories,
-  } = project
+  const { content, title, image } = project
 
   return (
     <div className="h-96 overflow-hidden border rounded-xl space-y-5 shadow-lg shadow-teal-100">

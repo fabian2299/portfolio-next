@@ -4,10 +4,14 @@ import { InferGetStaticPropsType } from 'next'
 import { clientAxios } from 'services/clientAxios'
 import FeaturedProjects from '@/components/Home/FeaturedProjects'
 import { IProject } from 'types'
+import { useSession } from 'next-auth/react'
 
 export default function Web({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { data: session } = useSession()
+  console.log(session)
+
   return (
     <Main title="Home">
       <Hero />
