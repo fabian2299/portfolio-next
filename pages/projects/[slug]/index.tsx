@@ -27,14 +27,17 @@ export default function ProjectDetailsPage({ project }: { project: IProject }) {
       <ProjectDetail project={project} />
 
       {session && (
-        <div className="space-x-5">
+        <div className="space-x-5 my-10">
           <button
-            className="mt-5 rounded-full px-4 py-3 bg-red-600 text-white"
+            className="rounded-full px-4 py-3 bg-red-600 text-white"
             onClick={() => handleDelete(project.id)}
           >
             Delete Project
           </button>
-          <button className="mt-5 rounded-full px-4 py-3 bg-yellow-600 text-white">
+          <button
+            className="rounded-full px-4 py-3 bg-yellow-600 text-white"
+            onClick={() => router.push(`/projects/${project.slug}/edit`)}
+          >
             Update Project
           </button>
         </div>
