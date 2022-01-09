@@ -14,7 +14,6 @@ export default function ProjectDetailsPage({ project }: { project: IProject }) {
     try {
       const res = await clientAxios.delete(`/projects/${id}`)
       const data = await res.data
-      console.log(data)
     } catch (error) {
       console.log(error)
     } finally {

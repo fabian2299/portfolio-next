@@ -15,7 +15,7 @@ export default function ProjectDetail({ project }: { project: IProject }) {
   return (
     <motion.section initial="initial" animate="animate" className="p-5">
       <button
-        onClick={() => router.back()}
+        onClick={() => router.push('/projects')}
         className="py-2 px-3 bg-emerald-600 rounded-lg text-white my-4"
       >
         Go Back

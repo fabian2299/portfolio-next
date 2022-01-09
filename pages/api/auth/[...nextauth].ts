@@ -10,13 +10,12 @@ const options: NextAuthOptions = {
   theme: {
     colorScheme: 'light',
   },
-  debug: process.env.NODE_ENV === 'development',
+  secret: process.env.SECRET,
   session: {
     strategy: 'jwt',
+    maxAge: 60 * 15, // 15 min
   },
-  jwt: {
-    secret: process.env.AUTH_JWT_SECRET,
-  },
+  debug: process.env.NODE_ENV === 'development',
   providers: [
     Credentials({
       name: 'Admin',

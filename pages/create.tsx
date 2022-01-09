@@ -3,11 +3,37 @@ import { useRouter } from 'next/router'
 import { stringToSlug } from 'lib'
 import { clientAxios } from 'services/clientAxios'
 import Main from '@/components/layout/Main'
+import { getSession } from 'next-auth/react'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { Session } from 'next-auth'
 
-export default function CreatePage() {
+type CreatePageProps = {
+  session: Session | null
+}
+export const getServerSideProps: GetServerSideProps<CreatePageProps> = async ({
+  req,
+}) => {
+  const session = await getSession({ req })
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { session },
+  }
+}
+
+export default function CreatePage({
+  session,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter()
   const updateSlug = router.query.slug
-  console.log(updateSlug)
 
   const [slug, setSlug] = useState('')
   const [image, setImage] = useState('')
@@ -51,7 +77,8 @@ export default function CreatePage() {
 
   const updateTask = async () => {
     try {
-      await clientAxios.patch(`/projects/${updateSlug}`, values)
+      const project = { ...values, slug }
+      await clientAxios.patch(`/projects/${updateSlug}`, project)
     } catch (error) {
       console.log(error)
     }
@@ -223,24 +250,22 @@ export default function CreatePage() {
             />
           </div>
 
-          {!updateSlug && (
-            <div className="flex flex-col space-y-5">
-              <label
-                className="text-2xl font-bold text-emerald-800"
-                htmlFor="slug"
-              >
-                Slug
-              </label>
-              <input
-                id="slug"
-                name="slug"
-                type="text"
-                value={slug}
-                readOnly
-                className="rounded-lg text-slate-700 cursor-not-allowed"
-              />
-            </div>
-          )}
+          <div className="flex flex-col space-y-5">
+            <label
+              className="text-2xl font-bold text-emerald-800"
+              htmlFor="slug"
+            >
+              Slug
+            </label>
+            <input
+              id="slug"
+              name="slug"
+              type="text"
+              value={slug}
+              readOnly
+              className="rounded-lg text-slate-700 cursor-not-allowed"
+            />
+          </div>
 
           <input
             disabled={notValid}
