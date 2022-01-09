@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { stringToSlug } from 'lib'
 import { clientAxios } from 'services/clientAxios'
@@ -98,18 +98,22 @@ export default function CreatePage({
     await router.push('/')
   }
 
-  const getTask = async () => {
-    const res = await clientAxios.get(`/projects/${updateSlug}`)
-    const data = await res.data
+  const getTask = useCallback(async () => {
+    try {
+      const res = await clientAxios.get(`/projects/${updateSlug}`)
+      const data = await res.data
 
-    setValues({
-      title: data.title,
-      content: data.content,
-      githubUrl: data.githubUrl,
-      deployedUrl: data.deployedUrl,
-      categories: data.categories,
-    })
-  }
+      setValues({
+        title: data.title,
+        content: data.content,
+        githubUrl: data.githubUrl,
+        deployedUrl: data.deployedUrl,
+        categories: data.categories,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [updateSlug])
 
   useEffect(() => {
     if (updateSlug) {
@@ -123,7 +127,7 @@ export default function CreatePage({
         categories: '',
       })
     }
-  }, [updateSlug])
+  }, [updateSlug, getTask])
 
   const notValid = Object.values(values).includes('')
 
