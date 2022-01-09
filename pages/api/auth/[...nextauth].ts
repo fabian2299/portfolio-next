@@ -23,7 +23,7 @@ const options: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const res = await fetch(`http://localhost:3000/api/auth/admin`, {
+        const res = await fetch('/api/auth/admin', {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
