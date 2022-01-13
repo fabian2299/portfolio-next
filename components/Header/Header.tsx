@@ -18,7 +18,7 @@ export default function Header() {
   }, [router.pathname])
 
   return (
-    <header className="sticky top-0 bg-slate-100 z-10">
+    <header className="sticky top-0 bg-emerald-700 z-[9999]">
       <div className="flex justify-between items-center p-1 max-w-6xl mx-auto">
         {/* logo */}
         <Logo />

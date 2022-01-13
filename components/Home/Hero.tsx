@@ -1,34 +1,44 @@
-import Description from './Description'
-import pcImage from '../../public/images/pc.jpg'
-import rocketImage from '../../public/images/rocket.jpg'
-import landImage from '../../public/images/land.jpg'
+import { Box, Center, Heading, Text, VStack } from '@chakra-ui/react'
+import Image from 'next/image'
+import pc from '../../public/images/pc.jpg'
 
 export default function Hero() {
   return (
-    <section className="p-5 space-y-5 bg-emerald-700">
-      <div className=" space-y-5 text-slate-50">
-        <h1 className="text-center  text-3xl font-black flex-grow">
-          Succesfull Front-end Development
-        </h1>
-      </div>
-
-      <div className="grid  md:grid-cols-2 xl:grid-cols-3  gap-5 ">
-        <Description
-          title="Technologies"
-          description="I am improving and practicing every day, to build scalable, functional and great applications (like this one 😃   )."
-          image={pcImage}
-        />
-        <Description
-          title="Front-end Developer"
-          description="Hi I am Fabian nice to meet you, I design and code beautifully simple things, and I love what I do."
-          image={rocketImage}
-        />
-        <Description
-          title="Learning Path"
-          description="I believe that learning never ends and Udemy, Platzi , Youtube and more... helped me to achieve that goal."
-          image={landImage}
-        />
-      </div>
+    <section>
+      <Box pos="relative" h="md">
+        <Box pos="absolute" h="full" w="full" sx={{ filter: 'brightness(.4)' }}>
+          <Image
+            src={pc}
+            placeholder="blur"
+            alt="hero"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </Box>
+        <Center
+          pos="absolute"
+          zIndex="dropdown"
+          h="full"
+          w="full"
+          color="white"
+        >
+          <VStack spacing="10">
+            <Image
+              src="/images/perfil.jpeg"
+              alt="perfil"
+              width={100}
+              height={100}
+              layout="fixed"
+              className="rounded-full"
+            />
+            <Heading align="center">Succesfull Front-end Development</Heading>
+            <Text align="center" fontSize="xl" fontWeight={'semibold'}>
+              I design code all day, every day Because I love it!
+            </Text>
+          </VStack>
+        </Center>
+      </Box>
     </section>
   )
 }

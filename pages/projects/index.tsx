@@ -1,4 +1,4 @@
-import Main from '@/components/layout/Main'
+import Main from '@/components/Layout/Main'
 import ProjectList from '@/components/Project/ProjectList'
 import useDebounce from 'hooks/useDebounce'
 import { InferGetStaticPropsType } from 'next'
@@ -61,7 +61,7 @@ export default function Home({
   }, [debouncedValue])
 
   return (
-    <Main title="Projects">
+    <Main title="Portfolio - Projects">
       <div className="p-10 space-y-8 border-x">
         <h2 className=" text-center text-3xl font-black text-emerald-800">
           Search by Category

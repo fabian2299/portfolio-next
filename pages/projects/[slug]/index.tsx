@@ -1,4 +1,4 @@
-import Main from '@/components/layout/Main'
+import Main from '@/components/Layout/Main'
 import ProjectDetail from '@/components/Project/ProjectDetail'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
@@ -22,7 +22,7 @@ export default function ProjectDetailsPage({ project }: { project: IProject }) {
   }
 
   return (
-    <Main title={project.title}>
+    <Main title={`Portfolio - ${project.title}`}>
       <ProjectDetail project={project} />
 
       {session && (

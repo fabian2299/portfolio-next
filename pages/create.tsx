@@ -2,7 +2,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { stringToSlug } from 'lib'
 import { clientAxios } from 'services/clientAxios'
-import Main from '@/components/layout/Main'
+import Main from '@/components/Layout/Main'
 import { getSession } from 'next-auth/react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { Session } from 'next-auth'
@@ -132,7 +132,7 @@ export default function CreatePage({
   const notValid = Object.values(values).includes('')
 
   return (
-    <Main title="Create">
+    <Main title="Portfolio - Create">
       <div className="py-10 hidden md:block">
         <h1 className="text-4xl text-emerald-800 text-center font-bold">
           {updateSlug ? 'Update Project' : 'Create a Project'}

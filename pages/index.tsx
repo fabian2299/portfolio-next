@@ -1,21 +1,14 @@
-import Hero from '@/components/Home/Hero'
-import Main from '@/components/layout/Main'
-import { InferGetStaticPropsType } from 'next'
-import { clientAxios } from 'services/clientAxios'
-import FeaturedProjects from '@/components/Home/FeaturedProjects'
+import type { InferGetStaticPropsType } from 'next'
 import { IProject } from 'types'
-import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { clientAxios } from 'services/clientAxios'
 
-export default function Web({
-  projects,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Main title="Home">
-      <Hero />
-      <FeaturedProjects projects={projects} />
-    </Main>
-  )
-}
+import { Box, Button, Center } from '@chakra-ui/react'
+
+import FeaturedProjects from '@/components/Home/FeaturedProjects'
+import Hero from '@/components/Home/Hero'
+import Main from '@/components/Layout/Main'
+import TechStackList from '@/components/Home/TechStackList'
 
 export const getStaticProps = async () => {
   const res = await clientAxios.get('/projects')
@@ -23,6 +16,29 @@ export const getStaticProps = async () => {
 
   return {
     props: { projects },
-    revalidate: 1,
   }
+}
+
+export default function Web({
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return (
+    <Main title="Portfolio - Home">
+      <Hero />
+
+      <FeaturedProjects projects={projects} />
+
+      <Center mt="10">
+        <Link href="/projects" passHref>
+          <Button align="center" colorScheme="green">
+            More Projects
+          </Button>
+        </Link>
+      </Center>
+
+      <Box>
+        <TechStackList />
+      </Box>
+    </Main>
+  )
 }

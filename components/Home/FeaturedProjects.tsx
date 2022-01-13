@@ -19,7 +19,7 @@ export default function FeaturedProjects({
         variants={fadeTitle}
         className=" text-center text-4xl font-black text-emerald-800"
       >
-        Featured Projects
+        Projects
       </motion.h2>
 
       <motion.div

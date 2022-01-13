@@ -1,18 +1,18 @@
-import Main from '@/components/layout/Main'
+import Main from '@/components/Layout/Main'
 import Image from 'next/image'
 import rocket from '../public/images/rocket.jpg'
 
 export default function AboutPage() {
   return (
-    <Main title="About">
+    <Main title="Portfolio - About">
       <section className="flex flex-col items-center space-y-10 p-5 border-x max-w-4xl mx-auto">
-        <div className="relative h-80 min-w-full rounded-lg overflow-hidden">
+        <div className="relative rounded-lg overflow-hidden aspect-video h-80">
           <Image
             className=""
             src={rocket}
             alt="rocket"
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
             placeholder="blur"
           />
         </div>
