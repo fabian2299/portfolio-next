@@ -60,5 +60,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await clientAxios.get(`/projects/${slug}`)
   const project = await res.data
 
-  return { props: { project } }
+  return { props: { project }, revalidate: 1 }
 }
