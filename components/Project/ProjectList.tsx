@@ -6,21 +6,19 @@ import ProjectCard from './ProjectCard'
 
 interface ProjectListProps {
   projects: IProject[]
+  filter: string
 }
 
-export default function ProjectList({ projects }: ProjectListProps) {
+export default function ProjectList({ projects, filter }: ProjectListProps) {
   return (
     <motion.section
       initial="initial"
       animate="animate"
       className="space-y-5 p-10 border-x"
     >
-      <motion.h2
-        variants={fadeTitle}
-        className=" text-center text-4xl font-black text-emerald-800"
-      >
-        All My Projects
-      </motion.h2>
+      <h2 className=" text-center text-4xl font-black text-emerald-800 uppercase mb-10">
+        {filter}
+      </h2>
 
       <motion.div
         variants={stagger}

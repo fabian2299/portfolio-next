@@ -17,13 +17,13 @@ export default function Hero() {
           />
         </Box>
         <Center
-          pos="absolute"
+          pos="relative"
           zIndex="dropdown"
           h="full"
           w="full"
           color="white"
         >
-          <VStack spacing="10">
+          <VStack spacing="10" pos="relative">
             <Image
               src="/images/perfil.jpeg"
               alt="perfil"
@@ -33,8 +33,13 @@ export default function Hero() {
               className="rounded-full"
             />
             <Heading align="center">Succesfull Front-end Development</Heading>
-            <Text align="center" fontSize="xl" fontWeight={'semibold'}>
-              I design code all day, every day Because I love it!
+            <Text
+              align="center"
+              fontSize="xl"
+              fontWeight={'semibold'}
+              maxW={'container.xl'}
+            >
+              I write code every day Because I love it!
             </Text>
           </VStack>
         </Center>

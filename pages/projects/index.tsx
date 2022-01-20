@@ -14,9 +14,7 @@ const categoryList = [
   'prisma',
   'redux-toolkit',
   'chakraui',
-  'mongodb',
   'typescript',
-  'express',
 ]
 
 export default function Home({
@@ -25,7 +23,7 @@ export default function Home({
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const debouncedValue = useDebounce<string>(searchTerm, 600)
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState('view all')
   const [filterResults, setFilterResults] = useState([])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -79,10 +77,10 @@ export default function Home({
           ))}
         </select>
         {/* desktop categories */}
-        <div className="hidden md:grid md:grid-cols-5 gap-4 text-center mx-auto">
+        <div className="hidden md:grid md:grid-cols-4 gap-4 text-center mx-auto">
           {categoryList.map((category, i) => (
             <button
-              className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30"
+              className="bg-emerald-600 py-1 px-3 text-white  font-semibold rounded-lg shadow-lg shadow-emerald-500/30 text-xl"
               key={i}
               onClick={() => setFilter(category)}
             >
@@ -105,15 +103,15 @@ export default function Home({
       </div>
       {/* projects */}
       {filterResults.length > 0 && searchResults.length <= 0 && (
-        <ProjectList projects={filterResults} />
+        <ProjectList projects={filterResults} filter={filter} />
       )}
 
       {searchResults.length > 0 && filterResults.length <= 0 && (
-        <ProjectList projects={searchResults} />
+        <ProjectList projects={searchResults} filter={filter} />
       )}
 
       {searchResults.length <= 0 && filterResults.length <= 0 && (
-        <ProjectList projects={projects} />
+        <ProjectList projects={projects} filter={filter} />
       )}
     </Main>
   )
